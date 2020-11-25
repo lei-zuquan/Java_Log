@@ -1,0 +1,72 @@
+JUL Logging 日志处理
+
+LogManager.java 非常重要的一个类
+-------------------------
+    public static LogManager getLogManager() {
+        if (manager != null) {
+            manager.ensureLogManagerInitialized();
+        }
+        return manager;
+    }
+
+
+    final void ensureLogManagerInitialized() {
+        ...
+                            // Read configuration.
+                            owner.readPrimordialConfiguration(); // 加载配置文件
+        ...
+    }
+
+    private void readPrimordialConfiguration() {
+        ...
+                                        readConfiguration();
+        ...
+    }
+
+
+        public void readConfiguration() throws IOException, SecurityException {
+            checkPermission();
+
+            // if a configuration class is specified, load it and use it.
+            String cname = System.getProperty("java.util.logging.config.class");
+            if (cname != null) {
+                try {
+                    // Instantiate the named class.  It is its constructor's
+                    // responsibility to initialize the logging configuration, by
+                    // calling readConfiguration(InputStream) with a suitable stream.
+                    try {
+                        Class<?> clz = ClassLoader.getSystemClassLoader().loadClass(cname);
+                        clz.newInstance();
+                        return;
+                    } catch (ClassNotFoundException ex) {
+                        Class<?> clz = Thread.currentThread().getContextClassLoader().loadClass(cname);
+                        clz.newInstance();
+                        return;
+                    }
+                } catch (Exception ex) {
+                    System.err.println("Logging configuration class \"" + cname + "\" failed");
+                    System.err.println("" + ex);
+                    // keep going and useful config file.
+                }
+            }
+
+            String fname = System.getProperty("java.util.logging.config.file");
+            if (fname == null) {
+                fname = System.getProperty("java.home");
+                if (fname == null) {
+                    throw new Error("Can't find java.home ??");
+                }
+                File f = new File(fname, "lib");
+                f = new File(f, "logging.properties");
+                fname = f.getCanonicalPath();
+            }
+            try (final InputStream in = new FileInputStream(fname)) {
+                final BufferedInputStream bin = new BufferedInputStream(in);
+                readConfiguration(bin);
+            }
+        }
+
+===============================
+如果我们没有配置日志文件的话。默认是会加载：D:\software\Java\jdk1.8.0_211\jre\lib\logging.properties
+
+如果我们想要自定义日志输出的主知，则可以将上述文件拷贝至项目的resources 目录下

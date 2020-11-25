@@ -2,6 +2,7 @@ package com.log;
 
 import org.junit.Test;
 
+import java.io.InputStream;
 import java.util.logging.*;
 
 /**
@@ -119,6 +120,29 @@ public class T01_JULTest {
         logger1.fine("fine");
         logger1.finer("finer");
         logger1.finest("finest");
+    }
+
+
+    // 加载自定义配置文件：从指定配置文件中加载日志输出级别
+    @Test
+    public void testLogProperties() throws Exception {
+        // 读取配置文件，通过类加载器
+        InputStream in = T01_JULTest.class.getClassLoader().getResourceAsStream("logging.properties");
+        // 创建LogManager
+        LogManager logManager = LogManager.getLogManager();
+        // 通过LogManager 加载配置文件；相当于将JAVA_HOME/lib/logging.properties 进行了替换
+        logManager.readConfiguration(in);
+
+        // TODO: 因为加载的是自定义日志配置文件，日志输出级别为ALL；可以运行起来验证
+        // 创建日志记录器
+        Logger logger = Logger.getLogger("com.log");
+        logger.severe("server");
+        logger.warning("warning");
+        logger.info("info"); // jul 默认的日志级别info
+        logger.config("config");
+        logger.fine("fine");
+        logger.finer("finer");
+        logger.finest("finest");
     }
 }
 
