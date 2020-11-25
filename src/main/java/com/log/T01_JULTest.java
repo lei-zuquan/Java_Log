@@ -13,11 +13,11 @@ import java.util.logging.Logger;
  * @Description:
  */
 public class T01_JULTest {
-    // 快速入门
+    // JUL 日志快速入门
     @Test
     public void testQuick() {
         // 1.创建日志记录器对象
-        Logger logger = Logger.getLogger("com.log.test.JULTest");
+        Logger logger = Logger.getLogger("com.log.test.T01_JULTest");
         // 2.日志记录输出
         logger.info("hello jul");
 
@@ -30,7 +30,20 @@ public class T01_JULTest {
         logger.log(Level.INFO, "用户信息：{0},{1}", new Object[]{name, age});
     }
 
-
+    // JUL日志级别测试
+    @Test
+    public void testLogLevel() throws Exception {
+        // 1.获取日志记录器对象
+        Logger logger = Logger.getLogger("com.log.T01_JULTest");
+        // 2.日志记录输出
+        logger.severe("server");
+        logger.warning("warning");
+        logger.info("info"); // jul 默认的日志级别info
+        logger.config("config");
+        logger.fine("fine");
+        logger.finer("finer");
+        logger.finest("finest");
+    }
 }
 
 
