@@ -1,0 +1,5 @@
+Logger logger = Logger.getLogger(Log4jTest.class);
+    LogManager.getLogger(clazz.getName());
+        LogManager 静态代码块中
+            OptionConverter.selectAndConfigure(url, configuratorClassName,
+                configurator = new PropertyConfigurator();
