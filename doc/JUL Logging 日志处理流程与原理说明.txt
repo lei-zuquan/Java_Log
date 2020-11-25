@@ -1,0 +1,10 @@
+JUC 日志处理有两个核心的对象：LoggerManager、Logger
+
+初始化LogManager
+LogManager 加载logging.properties 配置【可以是系统的，也可以是自定义配置文件】
+添加Logger 到LogManager
+从单例LogManager 获取Logger
+设置级别Level，并指定日志记录LogRecord
+Filter 提供了日志级别之外更细粒度的控制
+Handler 是用来处理日志输出位置
+Formatter 是用来格式化LogRecord 的
