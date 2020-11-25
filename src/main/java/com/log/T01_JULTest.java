@@ -143,6 +143,16 @@ public class T01_JULTest {
         logger.fine("fine");
         logger.finer("finer");
         logger.finest("finest");
+
+        // 自定义日志记录器
+        Logger logger2 = Logger.getLogger("test");
+        logger2.severe("server test");
+        logger2.warning("warning test");
+        logger2.info("info test"); // jul 默认的日志级别info
+        logger2.config("config test");
+        logger2.fine("fine test");
+        logger2.finer("finer test");
+        logger2.finest("finest test");
     }
 }
 
