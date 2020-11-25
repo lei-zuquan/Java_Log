@@ -82,6 +82,44 @@ public class T01_JULTest {
         logger.finer("finer");
         logger.finest("finest");
     }
+
+    // Logger 对象父子关系
+    @Test
+    public void testLogParent() throws Exception {
+        // todo: 日志父子关系是根据包名关系继承的
+        Logger logger1 = Logger.getLogger("com.log");
+        Logger logger2 = Logger.getLogger("com"); // com包没有父包的话，默认继承自RootLogger
+
+        // 测试日志对象是否存在父子关系：答案是存在的
+        System.out.println(logger1.getParent() == logger2);
+        // 所有日志记录器的顶级父无素 LogManager$RootLogger, name ""
+        System.out.println("logger2 Parent:" + logger2.getParent() + ", name:" + logger2.getParent().getName());
+
+
+        /*
+            todo: 1因为logger2是父日志级别，通过修改它的日志输出级别，就可以控制logger1的日志输出级别
+            todo: 2如果关闭logger2 父日志级别则logger1不再继承自logger2
+         */
+        // 关闭默认配置
+        logger2.setUseParentHandlers(false);
+        // 自定义配置日志级别
+        // 1.将日志通过 创建ConsoleHandler 控制台输出
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        // 创建简单格式转换对象
+        SimpleFormatter simpleFormatter = new SimpleFormatter();
+
+        // 进行关联
+        consoleHandler.setFormatter(simpleFormatter);
+        logger2.addHandler(consoleHandler);
+
+        logger1.severe("server");
+        logger1.warning("warning");
+        logger1.info("info"); // jul 默认的日志级别info
+        logger1.config("config");
+        logger1.fine("fine");
+        logger1.finer("finer");
+        logger1.finest("finest");
+    }
 }
 
 
