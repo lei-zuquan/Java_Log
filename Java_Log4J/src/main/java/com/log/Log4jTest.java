@@ -1,6 +1,7 @@
 package com.log;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.helpers.LogLog;
 import org.junit.Test;
 
 /**
@@ -15,6 +16,9 @@ public class Log4jTest {
     // Log4j 基础
     @Test
     public void testQuick(){
+        // 开启 log4j 内置日志记录，如果开启内置日志记录则日志输出会更多
+        LogLog.setInternalDebugging(true);
+
         // 初始化配置信息，在入门案例中暂不使用配置文件
         // BasicConfigurator.configure();
         // 获取日志记录器对象
