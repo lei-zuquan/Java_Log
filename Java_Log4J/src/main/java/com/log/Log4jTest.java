@@ -26,7 +26,7 @@ public class Log4jTest {
         // 日志记录输出
         logger.info("hello log4j");
 
-        for (int i = 0; i < 10000; i++) {
+        //for (int i = 0; i < 10000; i++) {
             // 日志级别有6种，默认的日志级别是DEBUG
             logger.fatal("fatal"); // 严重错误，一般会造成系统崩溃并终止运行
             logger.error("error"); // 错误信息，不会影响系统运行
@@ -34,6 +34,15 @@ public class Log4jTest {
             logger.info("info");   // 运行信息，数据连接、网络连接、IO 操作等等
             logger.debug("debug"); // 调试信息，一般在开发中使用，记录程序变量参数传递信息等等
             logger.trace("trace"); // 追踪信息，记录程序所有的流程信息
-        }
+        //}
+
+        Logger logger1 = Logger.getLogger(Logger.class);
+        // 日志级别有6种，默认的日志级别是DEBUG
+        logger1.fatal("fatal logger1"); // 严重错误，一般会造成系统崩溃并终止运行
+        logger1.error("error logger1"); // 错误信息，不会影响系统运行
+        logger1.warn("warn logger1");   // 警告信息，可能会发生问题
+        logger1.info("info logger1");   // 运行信息，数据连接、网络连接、IO 操作等等
+        logger1.debug("debug logger1"); // 调试信息，一般在开发中使用，记录程序变量参数传递信息等等
+        logger1.trace("trace logger1"); // 追踪信息，记录程序所有的流程信息
     }
 }
