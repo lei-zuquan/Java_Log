@@ -20,11 +20,25 @@
         </dependency>
 
         <!-- slf4j 内置的简单实现 -->
-        <!-- 如果只有门面，没有实现的话是运行不起来的 -->
+        <!-- 如果只有门面，没有实现的话是运行不起来的
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.21</version>
+        </dependency>   -->
+
+        <!-- 通过logback 日志实现 ; 如果slf4j-simple依赖也在的话，优先使用它，则需要将此依赖进行移除即可
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>  -->
+
+        <!-- nop 日志开关 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.25</version>
         </dependency>
 
         <!-- junit 单元测试 -->
