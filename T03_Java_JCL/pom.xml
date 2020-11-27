@@ -18,6 +18,13 @@
             <version>1.2</version>
         </dependency>
 
+        <!-- 如果我们导入log4j的依赖，再来看看日志输出，则不再走jdk14 -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
