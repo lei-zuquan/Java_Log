@@ -69,6 +69,13 @@
             <!-- 按照文件大小拆分 -->
             <maxFileSize>1MB</maxFileSize>
         </rollingPolicy>
+        <!-- 日志级别过滤器 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 日志过滤规则 -->
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
     </appender>
 
     <!-- root logger 配置 -->
