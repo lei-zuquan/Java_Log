@@ -17,11 +17,13 @@ public class LogbackTest {
     // 快速入门
     @Test
     public void testQuick() throws Exception {
-        // 日志输出
-        LOGGER.error("error");
-        LOGGER.warn("warning");
-        LOGGER.info("info");
-        LOGGER.debug("debug");  // 默认的日志级别信息
-        LOGGER.trace("trace");  // 追踪信息
+        for (int i = 0; i < 10000; i++) {
+            // 日志输出
+            LOGGER.error("error");
+            LOGGER.warn("warning");
+            LOGGER.info("info");
+            LOGGER.debug("debug");  // 默认的日志级别信息
+            LOGGER.trace("trace");  // 追踪信息
+        }
     }
 }
