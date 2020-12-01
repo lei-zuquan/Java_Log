@@ -93,7 +93,9 @@
         <appender-ref ref="async"/>
     </root>
 
-    <!-- 自定义 logger 对象 -->
+    <!-- 自定义 logger 对象
+       additivity="false" 自定义 logger 对象是否继承 rootLogger
+     -->
     <logger name="com.log" level="info" additivity="false">
         <appender-ref ref="console"/>
     </logger>
