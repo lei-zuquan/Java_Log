@@ -47,19 +47,19 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.12</version>
         </dependency> -->
-        <!-- 导入适配器后，再导入具体的实现类
+        <!-- 导入适配器后，再导入具体的实现类 -->
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
-        </dependency>  -->
+        </dependency>
 
-        <!-- 绑定 JUL 日志实现，需要导入适配器 -->
+        <!-- 绑定 JUL 日志实现，需要导入适配器
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>
             <version>1.7.25</version>
-        </dependency>
+        </dependency>  -->
 
         <!-- junit 单元测试 -->
         <dependency>
