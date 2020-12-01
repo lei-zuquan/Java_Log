@@ -78,11 +78,23 @@
         </filter>
     </appender>
 
+    <!-- 异步日志 -->
+    <appender name="async" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 指定某个具体的 appender -->
+        <appender-ref ref="rollFile"/>
+    </appender>
+
     <!-- root logger 配置 -->
     <root level="ALL">
         <appender-ref ref="console"/> <!-- 控制台输出 -->
         <appender-ref ref="file"/>    <!-- 文件输出 -->
         <appender-ref ref="htmlFile"/>    <!-- html文件输出 -->
-        <appender-ref ref="rollFile"/>    <!-- 拆分文件输出 -->
+        <!--<appender-ref ref="rollFile"/>  -->  <!-- 拆分文件输出 -->
+        <appender-ref ref="async"/>
     </root>
+
+    <!-- 自定义 logger 对象 -->
+    <logger name="com.log" level="info" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
 </configuration>
