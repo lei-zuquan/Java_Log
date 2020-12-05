@@ -16,6 +16,7 @@
         <module>T03_Java_JCL</module>
         <module>T04_Java_SLF4J</module>
         <module>T05_LogBack</module>
+        <module>T06_Log4J2</module>
     </modules>
 
 
