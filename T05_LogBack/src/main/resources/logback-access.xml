@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- always a good activate OnConsoleStatusListener -->
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+
+    <!-- 日志保存路径 -->
+    <property name="LOG_DIR" value="${catalina.base}/logs"/>
+
+    <!-- 日志拆分和归档压缩的 appender 对象 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 日志文件保存路径 -->
+        <file>${LOG_DIR}/access.log</file>
+
+        <!-- 指定拆分规则：以天为单位的拆分规则，将其进行压缩 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>access.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+        </rollingPolicy>
+
+        <encoder>
+            <!-- 日志消息格式表达式 -->
+            <pattern>%h %l %u [%t] "%r" %s %b "%i{Referer}" "%i{User-Agent}"</pattern>
+            <!--<pattern>combined</pattern>-->
+        </encoder>
+    </appender>
+
+    <appender-ref ref="FILE"/>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
