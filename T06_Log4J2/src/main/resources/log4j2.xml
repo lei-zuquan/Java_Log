@@ -3,7 +3,7 @@
     status="warn" 日志框架本身的输出日志级别，可以修改为debug
     monitorInterval="5" 自动加载配置文件的间隔时间，不低于 5秒；生产环境中修改配置文件，是热更新，无需重启应用
  -->
-<configuration status="warn" monitorInterval="5">
+<configuration status="debug" monitorInterval="5">
     <!--
     集中配置属性进行管理
     使用时通过:${name}
